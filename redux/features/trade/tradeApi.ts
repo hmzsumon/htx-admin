@@ -76,6 +76,39 @@ export const tradeApi = apiSlice.injectEndpoints({
 			}),
 			invalidatesTags: ['LiveTrade'],
 		}),
+
+		//get 3m trade data
+		getThreeMTradeData: builder.query<any, any>({
+			query: () => ({
+				url: `/signalTrade/3m-activeTradeRound`,
+				method: 'GET',
+			}),
+		}),
+
+		//get 3m trade data by period
+		getTradeRoundsByPeriod: builder.query({
+			query: (period) => ({
+				url: `/signalTrade/${period}`,
+				method: 'GET',
+			}),
+		}),
+
+		// get signal trade data by symbol and issueId
+		getSignalTradeDataBySymbolAndIssueId: builder.query({
+			query: ({ symbol, issueId }) => ({
+				url: `/signalTrade/${symbol}/${issueId}`,
+				method: 'GET',
+			}),
+		}),
+
+		// signalTrade/declareManualResult
+		declareManualResult: builder.mutation({
+			query: (data) => ({
+				url: `/signalTrade/declareManualResult`,
+				method: 'POST',
+				body: data,
+			}),
+		}),
 	}),
 });
 
@@ -88,4 +121,8 @@ export const {
 	useEndLiveTradeMutation,
 	useTriggerForcedLossByPackageMutation,
 	useTriggerForcedProfitByPackageMutation,
+	useGetThreeMTradeDataQuery,
+	useGetTradeRoundsByPeriodQuery,
+	useGetSignalTradeDataBySymbolAndIssueIdQuery,
+	useDeclareManualResultMutation,
 } = tradeApi;

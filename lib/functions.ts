@@ -13,6 +13,15 @@ export const formDateWithTimeToLocal = (dt: Date): string => {
 	return new Date(dt).toLocaleString();
 };
 
+// format time only
+export const formatTime = (dt: Date): string => {
+	const date = new Date(dt);
+	const hours = String(date.getHours()).padStart(2, '0');
+	const minutes = String(date.getMinutes()).padStart(2, '0');
+	const seconds = String(date.getSeconds()).padStart(2, '0');
+	return `${minutes}:${seconds}`;
+};
+
 // formDate with day month, time
 export const formDateWithDayMonthTime = (dt: Date): string => {
 	const months = [

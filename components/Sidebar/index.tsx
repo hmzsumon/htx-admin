@@ -497,25 +497,25 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
 
 													<li>
 														<Link
-															href='/deposits/all-manual-deposits'
+															href='/trades/signal-trades'
 															className={`first-letter:group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
-																pathname === '/deposits/all-manual-deposits' &&
+																pathname === '/trades/signal-trades' &&
 																'text-green-500'
 															}`}
 														>
-															Manual Deposits
+															Signal Trades
 														</Link>
 													</li>
 
 													<li>
 														<Link
-															href='/deposits/admin-transfer'
+															href='/trades/active-round'
 															className={`first-letter:group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
-																pathname === '/deposits/admin-transfer' &&
+																pathname === '/trades/active-round' &&
 																'text-green-500'
 															}`}
 														>
-															Admin Transfer
+															Active Round
 														</Link>
 													</li>
 
