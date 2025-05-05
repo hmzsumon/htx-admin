@@ -64,8 +64,6 @@ const LiveTradeUsersTable = ({
 			? participants
 			: participants.filter((p: any) => p.tradePackage === selectedPackage);
 
-	console.log('filteredParticipants', filteredParticipants);
-
 	const rows: any = [];
 
 	filteredParticipants.length > 0 &&

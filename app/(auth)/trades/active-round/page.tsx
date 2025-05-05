@@ -1,7 +1,10 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { useGetTradeRoundsByPeriodQuery } from '@/redux/features/trade/tradeApi';
+import {
+	useGetSignalTradeConfigQuery,
+	useGetTradeRoundsByPeriodQuery,
+} from '@/redux/features/trade/tradeApi';
 import TradeRoundTable from '@/components/Trades/TradeRoundTable';
 import { useSocket } from '@/context/SocketContext';
 
@@ -9,6 +12,12 @@ const AdminRoundsPage = () => {
 	const { socket } = useSocket();
 	const timePeriods = ['1m', '3m', '5m', '15m', '30m'];
 	const [selectedPeriod, setSelectedPeriod] = useState('3m');
+
+	// SignalTradeConfig
+	const { data: configData, isLoading: isConfigLoading } =
+		useGetSignalTradeConfigQuery(undefined);
+	const { config } = configData || {};
+	console.log('config', config);
 
 	const { data, isLoading, refetch } =
 		useGetTradeRoundsByPeriodQuery(selectedPeriod);

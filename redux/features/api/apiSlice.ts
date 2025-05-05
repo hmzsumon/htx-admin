@@ -40,6 +40,9 @@ export const apiSlice = createApi({
 		'Packages',
 		'LiveTrade',
 		'LiveTradeProfitRate',
+		'PoolConfig',
+		'PoolHistory',
+		'SignalTradeConfig',
 	],
 	endpoints: (builder) => ({}),
 });

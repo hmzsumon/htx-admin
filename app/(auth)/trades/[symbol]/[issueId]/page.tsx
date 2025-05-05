@@ -2,7 +2,10 @@
 
 import { useParams, useRouter } from 'next/navigation';
 import React, { useEffect } from 'react';
-import { useGetSignalTradeDataBySymbolAndIssueIdQuery } from '@/redux/features/trade/tradeApi';
+import {
+	useGetSignalTradeConfigQuery,
+	useGetSignalTradeDataBySymbolAndIssueIdQuery,
+} from '@/redux/features/trade/tradeApi';
 import TradeRoundDetails from '@/components/Trades/TradeRoundDetails';
 import AdminResultPanel from '@/components/Trades/AdminResultPanel';
 import { useSocket } from '@/context/SocketContext';
@@ -15,6 +18,11 @@ const TradeDetailsPage = () => {
 		symbol: string;
 		issueId: string;
 	};
+
+	// SignalTradeConfig
+	const { data: configData, isLoading: isConfigLoading } =
+		useGetSignalTradeConfigQuery(undefined);
+	const { config } = configData || {};
 
 	const { data, isLoading, refetch } =
 		useGetSignalTradeDataBySymbolAndIssueIdQuery({
@@ -75,6 +83,45 @@ const TradeDetailsPage = () => {
 			</div>
 			<h1 className='text-xl font-bold mb-4'>🔍 Trade Round Details</h1>
 			<TradeRoundDetails round={round} />
+
+			{isConfigLoading ? (
+				<p className='p-4'>Loading config...</p>
+			) : (
+				<div className='mt-2'>
+					<h2 className='text-sm font-semibold mb-2'>⚙️ Trade Config</h2>
+					<div className='p-4 space-y-2 border rounded bg-gray-50 text-xs shadow-md'>
+						<div className='grid grid-cols-3'>
+							<p className='text-gray-700'>
+								<span className='font-semibold'>Today trade amount:</span>{' '}
+								{config?.todayTradeAmount || 0}$
+							</p>
+							<p className='text-gray-700'>
+								<span className='font-semibold'>Today Payout:</span>{' '}
+								{config?.toDayPayOut || 0}$
+							</p>
+							<p className='text-gray-700'>
+								<span className='font-semibold'>Trade Profit:</span>{' '}
+								{config?.toDayProfit || 0}$
+							</p>
+						</div>
+
+						<div className='grid grid-cols-3'>
+							<p className='text-gray-700'>
+								<span className='font-semibold'>Today Loss:</span>{' '}
+								{config?.toDayLoss || 0}$
+							</p>
+							<p className='text-gray-700'>
+								<span className='font-semibold'>Previous Payout:</span>{' '}
+								{config?.previousPay || 0}$
+							</p>
+							<p className='text-gray-700'>
+								<span className='font-semibold'>Trade Profit/Loss:</span>{' '}
+								{config?.todayProfitOrLoss || 0}$
+							</p>
+						</div>
+					</div>
+				</div>
+			)}
 
 			{round?.is_active ? (
 				<div className='mt-6'>

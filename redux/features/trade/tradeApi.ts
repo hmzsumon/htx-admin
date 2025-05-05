@@ -101,6 +101,15 @@ export const tradeApi = apiSlice.injectEndpoints({
 			}),
 		}),
 
+		// get /signalTrade/config
+		getSignalTradeConfig: builder.query({
+			query: () => ({
+				url: `/signalTrade-config`,
+				method: 'GET',
+			}),
+			providesTags: ['SignalTradeConfig'],
+		}),
+
 		// signalTrade/declareManualResult
 		declareManualResult: builder.mutation({
 			query: (data) => ({
@@ -108,6 +117,7 @@ export const tradeApi = apiSlice.injectEndpoints({
 				method: 'POST',
 				body: data,
 			}),
+			invalidatesTags: ['SignalTradeConfig'],
 		}),
 	}),
 });
@@ -124,5 +134,6 @@ export const {
 	useGetThreeMTradeDataQuery,
 	useGetTradeRoundsByPeriodQuery,
 	useGetSignalTradeDataBySymbolAndIssueIdQuery,
+	useGetSignalTradeConfigQuery,
 	useDeclareManualResultMutation,
 } = tradeApi;

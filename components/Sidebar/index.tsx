@@ -497,13 +497,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
 
 													<li>
 														<Link
-															href='/trades/signal-trades'
+															href='/trades/poll-config'
 															className={`first-letter:group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
-																pathname === '/trades/signal-trades' &&
+																pathname === '/trades/pool-config' &&
 																'text-green-500'
 															}`}
 														>
-															Signal Trades
+															Pool Config
 														</Link>
 													</li>
 
