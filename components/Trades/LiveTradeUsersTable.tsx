@@ -75,9 +75,10 @@ const LiveTradeUsersTable = ({
 				initialBalance: p.initialBalance,
 				currentBalance: p.currentBalance,
 				package: p.tradePackage,
-				percentChange: p.percentChange,
-				addedAmount: p.addedAmount,
+				percentChange: p.netPercentChange,
+				addedAmount: p.addedBalanceAmount,
 				isAddedBalance: p.isAddedBalance,
+				liveBalance: p.liveBalance,
 			});
 		});
 
@@ -116,6 +117,17 @@ const LiveTradeUsersTable = ({
 				</span>
 			),
 		},
+		{
+			field: 'liveBalance',
+			headerName: 'Live Balance',
+			width: 150,
+			renderCell: (params: any) => (
+				<span className='text-gray-500 font-semibold'>
+					{params.row.liveBalance} $
+				</span>
+			),
+		},
+
 		{
 			field: 'package',
 			headerName: 'Package',
