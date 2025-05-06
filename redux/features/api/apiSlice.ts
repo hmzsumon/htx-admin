@@ -43,6 +43,7 @@ export const apiSlice = createApi({
 		'PoolConfig',
 		'PoolHistory',
 		'SignalTradeConfig',
+		'Announcement',
 	],
 	endpoints: (builder) => ({}),
 });
