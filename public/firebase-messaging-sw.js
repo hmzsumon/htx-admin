@@ -1,31 +1,39 @@
-'use client';
 importScripts(
-	'https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js'
+	'https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js'
 );
 importScripts(
-	'https://www.gstatic.com/firebasejs/10.8.0/firebase-messaging-compat.js'
+	'https://www.gstatic.com/firebasejs/10.8.1/firebase-messaging-compat.js'
 );
 
-// আপনার Firebase কনফিগারেশন যুক্ত করুন
-const firebaseConfig = {
-	apiKey: 'YOUR_API_KEY',
-	authDomain: 'YOUR_PROJECT_ID.firebaseapp.com',
-	projectId: 'YOUR_PROJECT_ID',
-	storageBucket: 'YOUR_PROJECT_ID.appspot.com',
-	messagingSenderId: 'YOUR_SENDER_ID',
-	appId: 'YOUR_APP_ID',
-};
-
-// Firebase ইনিশিয়ালাইজ করুন
-firebase.initializeApp(firebaseConfig);
+firebase.initializeApp({
+	apiKey: 'AIzaSyD8wChib383Zw6oRNuDJeKAReEYCHuDncM',
+	authDomain: 'htx-trade.firebaseapp.com',
+	projectId: 'htx-trade',
+	storageBucket: 'htx-trade.appspot.com',
+	messagingSenderId: '1017443057427',
+	appId: '1:1017443057427:web:190a1b640735e279d3a4e6',
+});
 
 const messaging = firebase.messaging();
 
-// ব্যাকগ্রাউন্ড নোটিফিকেশন হ্যান্ডেল করুন
-messaging.onBackgroundMessage((payload) => {
-	console.log('Background Message received: ', payload);
-	self.registration.showNotification(payload.notification.title, {
-		body: payload.notification.body,
-		icon: '/firebase-logo.png',
-	});
+messaging.onBackgroundMessage(function (payload) {
+	console.log(
+		'[firebase-messaging-sw.js] Received background message:',
+		payload
+	);
+
+	const notificationTitle = payload.notification?.title || '🔔 Notification';
+	const notificationOptions = {
+		body: payload.notification?.body || '',
+		icon: '/icon-192x192.png', // 🔁 Ensure this file exists in /public
+	};
+
+	self.registration.showNotification(notificationTitle, notificationOptions);
+});
+
+self.addEventListener('notificationclick', function (event) {
+	event.notification.close();
+	event.waitUntil(
+		clients.openWindow('https://htx-trade.web.app/') // 🔁 or your dashboard
+	);
 });

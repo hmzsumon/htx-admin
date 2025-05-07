@@ -5,6 +5,8 @@ import StoreProvider from './StoreProvider';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { SocketProvider } from '@/context/SocketContext';
+import { FCMListener } from '@/lib/FCMListener';
+
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -21,6 +23,7 @@ export default function RootLayout({
 		<html lang='en'>
 			<body className={inter.className} suppressHydrationWarning={true}>
 				<StoreProvider>
+					{/* <FCMListener /> */}
 					<SocketProvider>{children}</SocketProvider>
 				</StoreProvider>
 				<ToastContainer />

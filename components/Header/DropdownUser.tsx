@@ -8,7 +8,6 @@ import { useRouter } from 'next/navigation';
 import { useSelector } from 'react-redux';
 import { fetchBaseQueryError } from '@/redux/services/helpers';
 import { formatDate } from '@/lib/functions';
-import CopyToClipboard from '@/lib/CopyToClipboard';
 
 const DropdownUser = () => {
 	const router = useRouter();
@@ -82,7 +81,7 @@ const DropdownUser = () => {
 					<Image
 						width={112}
 						height={112}
-						src={'/assets/team8.jpg'}
+						src={'/images/profile.png'}
 						alt='User'
 						className='rounded-full'
 					/>

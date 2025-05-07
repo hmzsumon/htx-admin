@@ -14,7 +14,7 @@ import React, { useState, useEffect } from 'react';
 import { GiReceiveMoney } from 'react-icons/gi';
 import { FaWallet, FaUsers } from 'react-icons/fa';
 import { CiInboxOut } from 'react-icons/ci';
-import { requestForToken } from '@/utils/firebase';
+import { requestForToken } from '@/lib/firebase';
 import { useSelector } from 'react-redux';
 
 const Dashboard = () => {
@@ -89,14 +89,14 @@ const Dashboard = () => {
 					<ItemCard
 						icon={<GiReceiveMoney />}
 						title='Total Deposit'
-						balance={company?.deposit?.total_deposit_amount}
+						balance={company?.deposit?.total_deposit}
 						is_balance={true}
 					/>
 
 					<ItemCard
 						icon={<FaWallet />}
 						title='Today Deposit'
-						balance={company?.deposit?.today_deposit_amount}
+						balance={company?.deposit?.today_total_deposit}
 						is_balance={true}
 					/>
 
@@ -106,19 +106,61 @@ const Dashboard = () => {
 						balance={company?.deposit?.today_admin_deposit_amount}
 						is_balance={true}
 					/>
+
 					<ItemCard
-						icon={<CiInboxOut />}
-						title='Total Withdraw'
-						balance={company?.withdraw?.total_withdraw_amount}
+						icon={<FaWallet />}
+						title='Total Admin Deposit'
+						balance={company?.deposit?.total_admin_deposit_amount}
 						is_balance={true}
 					/>
+					{/* Crypto Deposit */}
 					<ItemCard
-						icon={<CiInboxOut />}
-						title='Today Withdraw (Net Amount)'
-						balance={company?.withdraw?.today_withdraw_net_amount}
+						icon={<FaWallet />}
+						title='Today Crypto Deposit'
+						balance={company?.deposit?.today_blockbee_received}
 						is_balance={true}
 					/>
 
+					<ItemCard
+						icon={<FaWallet />}
+						title='Total Crypto Deposit'
+						balance={company?.deposit?.total_blockbee_received}
+						is_balance={true}
+					/>
+
+					<ItemCard
+						icon={<FaWallet />}
+						title='Total Deposit Fee'
+						balance={company?.deposit?.total_blockbee_fee}
+						is_balance={true}
+					/>
+					{/* Withdraw  */}
+					<ItemCard
+						icon={<CiInboxOut />}
+						title='Total Withdraw'
+						balance={company?.withdraw?.total_withdraw}
+						is_balance={true}
+					/>
+					<ItemCard
+						icon={<CiInboxOut />}
+						title='Total Net Withdraw'
+						balance={company?.withdraw?.total_net_withdraw}
+						is_balance={true}
+					/>
+					<ItemCard
+						icon={<CiInboxOut />}
+						title='Today Net Withdraw '
+						balance={company?.withdraw?.today_net_withdraw}
+						is_balance={true}
+					/>
+
+					<ItemCard
+						icon={<CiInboxOut />}
+						title='Today Withdraw Fee'
+						balance={company?.withdraw?.total_w_charge}
+						is_balance={true}
+					/>
+					{/* Users */}
 					<ItemCard
 						icon={<FaUsers />}
 						title='Total Users'
@@ -127,9 +169,46 @@ const Dashboard = () => {
 					/>
 					<ItemCard
 						icon={<FaUsers />}
+						title='Today Users'
+						balance={company?.users.tody_new_users}
+						is_balance={false}
+					/>
+					<ItemCard
+						icon={<FaUsers />}
+						title='Today Active Users'
+						balance={company?.users?.today_active_users}
+						is_balance={false}
+					/>
+					<ItemCard
+						icon={<FaUsers />}
 						title='Total Active Users'
 						balance={company?.users?.total_active_users}
 						is_balance={false}
+					/>
+					{/* Transfer */}
+					<ItemCard
+						icon={<CiInboxOut />}
+						title='Total Transfer'
+						balance={company?.transfer?.total_transfer}
+						is_balance={true}
+					/>
+					<ItemCard
+						icon={<CiInboxOut />}
+						title='Today Transfer'
+						balance={company?.transfer?.today_transfer}
+						is_balance={true}
+					/>
+					<ItemCard
+						icon={<CiInboxOut />}
+						title='Today Transfer Fee'
+						balance={company?.transfer?.today_t_charge}
+						is_balance={true}
+					/>
+					<ItemCard
+						icon={<CiInboxOut />}
+						title='Total Transfer Fee'
+						balance={company?.transfer?.total_t_charge}
+						is_balance={true}
 					/>
 				</div>
 			</div>
