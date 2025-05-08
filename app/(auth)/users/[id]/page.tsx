@@ -49,7 +49,7 @@ const UserDetails = ({ params }: any) => {
 	const handleToggleWithdrawChange = async (checked: boolean) => {
 		setIsWithdrawBlocked(checked);
 		try {
-			await withdrawBlock({ partner_id: user?.partner_id }).unwrap();
+			await withdrawBlock({ customer_id: user?.customer_id }).unwrap();
 			toast.success('Withdraw block/unblock successful');
 		} catch (error) {
 			setIsWithdrawBlocked(!checked);
@@ -61,7 +61,7 @@ const UserDetails = ({ params }: any) => {
 	const handleToggleUserBlock = async (checked: boolean) => {
 		setIsUserBlocked(checked);
 		try {
-			await blockUser({ partner_id: user?.partner_id }).unwrap();
+			await blockUser({ customer_id: user?.customer_id }).unwrap();
 			toast.success('User block/unblock successful');
 		} catch (error) {
 			setIsUserBlocked(!checked);
@@ -158,10 +158,10 @@ const UserDetails = ({ params }: any) => {
 								<span className='flex gap-4 items-center'>
 									<span>User Id:</span>
 									<span className='flex items-center gap-1 font-bold'>
-										{user?.partner_id || 'N/A'}
+										{user?.customer_id || 'N/A'}
 									</span>
 								</span>
-								<CopyToClipboard text={user?.partner_id} />
+								<CopyToClipboard text={user?.customer_id} />
 							</ListGroup.Item>
 
 							<ListGroup.Item>

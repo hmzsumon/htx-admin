@@ -44,12 +44,12 @@ const AllUsers = () => {
 		},
 
 		{
-			field: 'partner_id',
-			headerName: 'Partner ID',
+			field: 'customer_id',
+			headerName: 'Customer ID',
 			width: 130,
 			renderCell: (params: any) => (
 				<div className='flex items-center gap-2 text-xs'>
-					<p>{params.row.partner_id}</p>
+					<p>{params.row.customer_id}</p>
 				</div>
 			),
 		},
@@ -150,7 +150,7 @@ const AllUsers = () => {
 				id: user._id,
 				name: user.name,
 				email: user.email,
-				partner_id: user.partner_id,
+				customer_id: user.customer_id,
 				date: formatDate(user.createdAt),
 				is_active: user.is_active,
 				block: user.is_block,

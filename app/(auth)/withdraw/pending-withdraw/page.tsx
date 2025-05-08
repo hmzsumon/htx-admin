@@ -216,7 +216,9 @@ const PendingWithdraw = () => {
 					</div>
 				</Card>
 
-				<DataGrid rows={rows} columns={columns} />
+				<div className='w-full h-[500px] bg-white rounded-lg shadow-md'>
+					<DataGrid rows={rows} columns={columns} />
+				</div>
 			</div>
 		</div>
 	);
