@@ -34,6 +34,12 @@ export const depositApi = apiSlice.injectEndpoints({
 			query: () => '/admin/deposits',
 			providesTags: ['Deposits'],
 		}),
+
+		// get deposit by id
+		getDepositById: builder.query<any, any>({
+			query: (id) => `/admin/deposit/${id}`,
+			providesTags: ['Deposit'],
+		}),
 	}),
 });
 
@@ -43,4 +49,5 @@ export const {
 	useGetDepositQuery,
 	useGetActiveDepositMethodQuery,
 	useGetAdminDepositsQuery,
+	useGetDepositByIdQuery,
 } = depositApi;

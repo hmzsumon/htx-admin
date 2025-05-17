@@ -145,6 +145,16 @@ export const adminApi = apiSlice.injectEndpoints({
 			}),
 			invalidatesTags: ['LiveTradeProfitRate'],
 		}),
+
+		//create-spin-prize
+		createSpinPrize: builder.mutation<any, any>({
+			query: (body) => ({
+				url: '/create-spin-prize',
+				method: 'POST',
+				body,
+			}),
+			invalidatesTags: ['Deposit'],
+		}),
 	}),
 });
 
@@ -163,4 +173,5 @@ export const {
 	useGetAllManualDepositsQuery,
 	useGetLiveTradeProfitRateQuery,
 	useUpdateLiveTradeProfitRateMutation,
+	useCreateSpinPrizeMutation,
 } = adminApi;

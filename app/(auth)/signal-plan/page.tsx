@@ -196,7 +196,7 @@ const MentorSignalPanel = () => {
 				<div className='grid grid-cols-3 text-center bg-[#c3e8fd] font-semibold text-sm text-black'>
 					<div className={cellClass}>{currentDate.toUpperCase()}</div>
 					<div className={cellClass}>{session.toUpperCase()}</div>
-					<div className={cellClass}>TRADER ORI</div>
+					<div className={cellClass}>3 Minutes</div>
 				</div>
 				<div className='grid grid-cols-5 bg-gray-100 font-bold '>
 					<div className={cellClass}>ISSUE ID</div>

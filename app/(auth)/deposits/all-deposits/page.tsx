@@ -147,6 +147,18 @@ const AllDeposit = () => {
 				);
 			},
 		},
+		{
+			field: 'action',
+			headerName: 'Action',
+			width: 100,
+			renderCell: (params: any) => (
+				<div className='flex items-center gap-2 text-xs'>
+					<Link href={`/deposits/${params.row.id}`}>
+						<FaEye className='text-primary' />
+					</Link>
+				</div>
+			),
+		},
 	];
 
 	const rows: any = [];
