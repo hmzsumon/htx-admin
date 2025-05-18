@@ -148,6 +148,26 @@ const AllDeposit = () => {
 			},
 		},
 		{
+			field: 'spin',
+			headerName: 'Free Spin',
+			width: 100,
+			renderCell: (params: any) => {
+				return (
+					<div className='flex items-center font-bold'>
+						{params.row.spin ? (
+							<p className='text-green-500 '>
+								<span>Yes</span>
+							</p>
+						) : (
+							<p className='text-red-500 '>
+								<span>No</span>
+							</p>
+						)}
+					</div>
+				);
+			},
+		},
+		{
 			field: 'action',
 			headerName: 'Action',
 			width: 100,
@@ -177,6 +197,7 @@ const AllDeposit = () => {
 				date: formDateWithTime(deposit.createdAt),
 				charge: deposit.charge,
 				receive_amount: deposit.amount - deposit.charge,
+				spin: deposit.is_free_spin,
 			});
 		});
 
