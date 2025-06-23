@@ -37,7 +37,7 @@ const LiveTradeProfitRate = () => {
 	};
 
 	const formatDisplay = (value: number) =>
-		`${value.toFixed(2)} (${(value * 100).toFixed(0)}%)`;
+		`${value.toFixed(3)} (${(value * 100).toFixed(1)}%)`;
 
 	const packageNames = [
 		'TradeLite',
