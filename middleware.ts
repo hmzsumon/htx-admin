@@ -38,5 +38,6 @@ export const config = {
 		'/deposit/[depositId]',
 		'/withdraw/[withdrawId]',
 		'/deposit/deposit-methods',
+		'/trades/lt-profit-rate',
 	],
 };
