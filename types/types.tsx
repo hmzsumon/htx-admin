@@ -1,33 +1,50 @@
 export interface Package {
-	_id: number;
-	title: string;
-	price: number;
-	profit_day: string;
-	weekly: string;
-	return: string;
-	total_return: number;
-	profit_percent: number;
+  _id: number;
+  title: string;
+  price: number;
+  profit_day: string;
+  weekly: string;
+  return: string;
+  total_return: number;
+  profit_percent: number;
 }
 
 // myPackage interface
 export interface MyPackage {
-	_id: string;
-	p_title: string;
-	sub_title: string;
-	p_price: number;
-	p_return: number;
-	p_duration: string;
-	is_active: boolean;
-	is_expired: boolean;
-	profit: number;
+  _id: string;
+  p_title: string;
+  sub_title: string;
+  p_price: number;
+  p_return: number;
+  p_duration: string;
+  is_active: boolean;
+  is_expired: boolean;
+  profit: number;
 
-	to_day_profit: number;
-	active_date: Date;
-	expire_date: any;
-	profit_day: string;
-	weekly: string;
-	return: string;
-	total_return: number;
-	createdAt: string;
-	updatedAt: string;
+  to_day_profit: number;
+  active_date: Date;
+  expire_date: any;
+  profit_day: string;
+  weekly: string;
+  return: string;
+  total_return: number;
+  createdAt: string;
+  updatedAt: string;
 }
+
+/* ────────── BoosterConfig type ────────── */
+export type BoosterConfig = {
+  boost_percentage?: number;
+  booster_bonus?: number;
+  createdAt?: string;
+  current_boost_amount?: number;
+  current_boost_profit?: number;
+  current_booster_bonus?: number;
+  is_active?: boolean;
+  previous_boost_percentage?: number;
+  total_boost_amount?: number;
+  total_boost_profit?: number;
+  total_booster_bonus?: number;
+  total_booster_fee?: number; // may be negative
+  updatedAt?: string;
+};
