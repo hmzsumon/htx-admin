@@ -46,6 +46,7 @@ export const apiSlice = createApi({
     "Announcement",
     "Deposit",
     "Booster",
+    "IcmUsers",
   ],
   endpoints: (builder) => ({}),
 });
